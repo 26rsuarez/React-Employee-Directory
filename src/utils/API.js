@@ -5,7 +5,7 @@ import axios from "axios";
 export default {
   requestUsers: function() {
     return axios.get(
-      "https://randomuser.me/api/?results=20&inc=name,email" 
+      "https://randomuser.me/api/?results=20&inc=name,email,location&nat=us" 
     );
   }
 };
