@@ -17,9 +17,9 @@ If you want to run this locally, make sure you have node. Clone the repository a
 
 ## Usage Instructions
 
-This application is deployed on github at 
+This application is deployed at 
 
-https://26rsuarez.github.io/React-Employee-Directory
+https://reactemployeedirectory-rsm.herokuapp.com/
 
 
 Here is a screenshot of the website.
