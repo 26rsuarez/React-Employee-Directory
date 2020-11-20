@@ -21,8 +21,11 @@ function Filter(props) {
           }
             
         </datalist>
-        <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
-          Search
+        <button type="submit" onClick={props.handleFormSubmit} data-value="filter" className="btn btn-success">
+          Filter
+        </button>
+        <button type="submit" onClick={props.handleFormSubmit} data-value="unfilter" className="btn btn-danger">
+          Remove Filter
         </button>
       </div>
     </form>

@@ -11,6 +11,7 @@ import Filter from "./components/Filter"
 class App extends Component {
   //the state are the employees
   state = {
+    original: [],
     results: [],
     filter: ""
   }
@@ -25,7 +26,9 @@ class App extends Component {
     API.requestUsers()
     .then(res => {
       console.log(res);
-      this.setState({results: res.data.results})})
+      //the results and original both hold the employees in the state
+      this.setState({results: res.data.results,
+      original: res.data.results})})
     .catch(err => console.log(err))
   }
 
@@ -47,12 +50,16 @@ class App extends Component {
       
   }
 
-  filterList(state) {
-    console.log(state)
-    const filtered = this.state.results.filter(result => result.location.state === state);
-    console.log(filtered)
-    this.setState({results: filtered})
-    
+  filterList(state, btnName) {
+    //if the filter button is used the state changes by the filter, otherwise it goes back to the original
+    if (btnName === "filter") {
+      const filtered = this.state.results.filter(result => result.location.state === state);
+      console.log(filtered)
+      this.setState({results: filtered})
+    } else {
+      const unfiltered = this.state.original;
+      this.setState({results: unfiltered})
+    } 
   }
 
   handleInputChange = event => {
@@ -63,7 +70,8 @@ class App extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.filterList(this.state.filter)
+    const btnName = event.target.getAttribute("data-value")
+    this.filterList(this.state.filter, btnName)
   }
 
   render(){
